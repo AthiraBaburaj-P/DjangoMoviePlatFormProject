@@ -1,0 +1,136 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Movie Platform</title>
+    {% load static %}
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .background {
+            background-image: url("{% static 'sun.jpg' %}");
+            height: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            /* background: rgba(0, 0, 0, 0.5); Add a transparent background */
+            padding: 20px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 900px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .welcome-section {
+            max-width: 50%;
+        }
+
+        .welcome-section h1 {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+
+        .welcome-section p {
+            margin-bottom: 20px;
+        }
+
+        .welcome-section .social-icons a {
+            margin-right: 10px;
+            color: white;
+            text-decoration: none;
+        }
+
+        .form-section {
+            max-width: 50%;
+            /* background: rgba(255, 255, 255, 0.9); */
+            padding: 20px;
+            border-radius: 10px;
+            color: black;
+        }
+
+        .form-section h2 {
+            margin-bottom: 20px;
+        }
+
+        .form-section form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-section input[type="email"],
+        .form-section input[type="password"] {
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-section input[type="checkbox"] {
+            margin-bottom: 20px;
+        }
+
+        .form-section .submit-btn {
+            padding: 10px;
+            background-color: #e8501b;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .form-section .forgot-password {
+            margin-top: 10px;
+            text-align: right;
+        }
+
+        .form-section .forgot-password a {
+            color: #e8501b;
+            text-decoration: none;
+        }
+
+        .form-section .terms {
+            margin-top: 20px;
+            font-size: 12px;
+            color: grey;
+        }
+
+        .form-section .terms a {
+            color: grey;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="background">
+        <div class="container">
+            <div class="welcome-section">
+                <h1>Welcome Back</h1>
+            </div>
+            <div class="form-section">
+                <h2>Sign in</h2>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

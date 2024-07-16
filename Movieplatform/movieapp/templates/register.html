@@ -1,0 +1,168 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Movie Platform</title>
+    {% load static %}
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .background {
+            background-image: url("{% static 'image1.jpg' %}");
+            height: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+            color: rgb(240, 228, 228);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(15, 218, 201, 0.5);
+            max-width: 500px;
+            width: 100%;
+            text-align: left;
+            color: rgb(216, 240, 240);
+            background-color: rgba(224, 208, 208, 0.6); 
+            margin: 20px; 
+        }
+
+        .form-section {
+            max-width: 50%;
+            padding: 20px;
+            border-radius: 10px;
+            color: black;
+        }
+
+        .form-section h2 {
+            margin-bottom: 20px;
+        }
+
+        .form-section form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-section input[type="email"],
+        .form-section input[type="password"] {
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-section input[type="checkbox"] {
+            margin-bottom: 20px;
+        }
+
+        .form-section .submit-btn {
+            padding: 10px;
+            background-color: #e8501b;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .form-section .forgot-password {
+            margin-top: 10px;
+            text-align: right;
+        }
+
+        .form-section .forgot-password a {
+            color: #e8501b;
+            text-decoration: none;
+        }
+
+        .form-section .terms {
+            margin-top: 20px;
+            font-size: 12px;
+            color: grey;
+        }
+
+        .form-section .terms a {
+            color: grey;
+            text-decoration: none;
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            z-index: 1000; 
+        }
+
+        .popup h2 {
+            margin-bottom: 10px;
+        }
+
+        .popup p {
+            margin-bottom: 20px;
+        }
+
+        .popup .close-btn {
+            background-color: #e8501b;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        
+        function showPopup() {
+            document.getElementById("popup").style.display = "block";
+
+            setTimeout(() => {
+            popup.style.display = "none";
+        }, 1000000);
+        }
+
+        
+        function closePopup() {
+            document.getElementById("popup").style.display = "none";
+        }
+    </script>
+
+</head>
+<body>
+    <div class="background">
+        <div class="container">
+            
+            <div class="form-section">
+                <h2>Sign Up</h2>
+                <form method="post" onsubmit="showPopup()">
+                    {% csrf_token %}
+                    {{ user_form.as_p }}
+                    <button type="submit" class="submit-btn">Register</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="popup" class="popup">
+        <h2>Welcome!</h2>
+        <p>Thank you for registering on our Movie Platform.</p>
+        <button class="close-btn" onclick="closePopup()">Close</button>
+    </div>
+
+</body>
+</html>
